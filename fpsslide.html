@@ -1,0 +1,27 @@
+<div id="fpsControl">
+  <label for="fpsSlider">🐢 FPS:</label>
+  <input type="range" id="fpsSlider" min="1" max="240" value="60">
+  <span id="fpsValue">50</span>
+</div>
+let turtleFPS = 50;
+
+const fpsSlider = document.getElementById("fpsSlider");
+const fpsValue = document.getElementById("fpsValue");
+
+fpsSlider.oninput = () => {
+  turtleFPS = Number(fpsSlider.value);
+  fpsValue.innerText = turtleFPS;
+
+  updateFPS(turtleFPS);
+};
+let loop;
+
+function updateFPS(fps) {
+  clearInterval(loop);
+  loop = setInterval(() => {
+    // Your engine tick goes here
+    console.log("TurtleMod tick at " + fps + " FPS");
+  }, 1000 / fps);
+}
+
+updateFPS(60); // default
