@@ -1,0 +1,17 @@
+{
+  "name": "MyPlugin",
+  "version": "1.0",
+  "author": "Kenny Collins — builderman",
+  "description": "Adds new TurtleMod blocks. Hi.",
+  "icon": "🐢",
+  "blocks": [
+    {
+      "opcode": "turtle.say",
+      "text": "turtle say [MESSAGE]",
+      "arguments": {
+        "MESSAGE": "string"
+      },
+      "js": "alert(args.MESSAGE)"
+    }
+  ]
+}
