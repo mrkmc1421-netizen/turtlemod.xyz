@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TurtleMod Signup</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<div class="auth-container">
+  <h2>Create Account 🐢</h2>
+
+  <form id="signupForm">
+    <input type="text" id="newUser" placeholder="Username" required>
+    <input type="password" id="newPass" placeholder="Password" required>
+    <input type="email" id="newEmail" placeholder="Email" required>
+
+    <label class="checkbox">
+      <input type="checkbox" id="agreeTOS" required>
+      I agree to the <a href="/tos.html">Terms of Service</a>
+    </label>
+
+    <label class="checkbox">
+      <input type="checkbox" id="consent" required>
+      I give consent to TurtleMod processing my account data
+    </label>
+
+    <button type="submit">Sign Up Today for free!</button>
+  </form>
+
+  <p class="switch">
+    Already have an account? <a href="login.html">Login</a>
+  </p>
+</div>
+
+<script src="auth.js"></script>
+</body>
+  </html>
