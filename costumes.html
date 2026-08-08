@@ -1,0 +1,61 @@
+// I love turtles 
+<div id="costumesTab">
+  <h2>Costumes 🐢</h2>
+
+  <div id="layerControls">
+    <button id="frontBtn">Front Layer</button>
+    <button id="backBtn">Back Layer</button>
+    <button id="lockBtn">Lock Part</button>
+    <button id="unlockBtn">Unlock Part</button>
+  </div>
+
+  <canvas id="pixelCanvas" width="512" height="512"></canvas>
+</div>
+const canvas = document.getElementById("pixelCanvas");
+const ctx = canvas.getContext("2d");
+
+const gridSize = 32; // 32x32 pixel grid
+const pixelSize = canvas.width / gridSize;
+
+let currentLayer = "front";
+let locked = false;
+
+let layers = {
+  front: Array(gridSize).fill().map(()=>Array(gridSize).fill("#00000000")),
+  back: Array(gridSize).fill().map(()=>Array(gridSize).fill("#00000000"))
+};
+function drawGrid() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw back layer first
+  for (let y=0; y<gridSize; y++) {
+    for (let x=0; x<gridSize; x++) {
+      ctx.fillStyle = layers.back[y][x];
+      ctx.fillRect(x*pixelSize, y*pixelSize, pixelSize, pixelSize);
+    }
+  }
+
+  // Draw front layer
+  for (let y=0; y<gridSize; y++) {
+    for (let x=0; x<gridSize; x++) {
+      ctx.fillStyle = layers.front[y][x];
+      ctx.fillRect(x*pixelSize, y*pixelSize, pixelSize, pixelSize);
+    }
+  }
+
+  // Draw grid lines
+  ctx.strokeStyle = "#444";
+  for (let i=0; i<=gridSize; i++) {
+    ctx.beginPath();
+    ctx.moveTo(i*pixelSize, 0);
+    ctx.lineTo(i*pixelSize, canvas.height);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0, i*pixelSize);
+    ctx.lineTo(canvas.width, i*pixelSize);
+    ctx.stroke();
+  }
+}
+
+drawGrid();
